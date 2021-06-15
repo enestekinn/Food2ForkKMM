@@ -2,6 +2,7 @@ package com.enestekin.food2forkkmm.interactors.recipe_list
 
 import com.enestekin.food2forkkmm.datasource.network.RecipeService
 import com.enestekin.food2forkkmm.domain.model.Recipe
+import com.enestekin.food2forkkmm.domain.util.DataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -11,20 +12,19 @@ class SearchRecipes(
     fun execute(
         page:Int,
         query: String,
-    ): Flow<List<Recipe>> = flow {
-        //how can we emit loading?
+    ): Flow<DataState<List<Recipe>>> = flow {
+        emit(DataState.loading())
 
 
-        //emit recipes
         try {
             val recipes = recipeService.search(
                 page = page,
                 query = query,
             )
-            emit(recipes)
+            emit(DataState.data(data = recipes))
 
         }catch (e: Exception){
-            //how can we emit an error
+            emit(DataState.error<List<Recipe>>(message = e.message?: "Unknown Error"))
         }
     }
 
