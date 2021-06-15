@@ -1,4 +1,4 @@
-package com.enestekin.food2forkkmm.datasource.domain.model
+package com.enestekin.food2forkkmm.domain.model
 
 import kotlinx.datetime.LocalDateTime
 
