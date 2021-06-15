@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import com.enestekin.food2forkkmm.android.presentation.navigation.Navigation
 import com.enestekin.food2forkkmm.datasource.network.KtorClientFactory
+import com.enestekin.food2forkkmm.datasource.network.RecipeServiceImpl
 import com.enestekin.food2forkkmm.datasource.network.model.RecipeDto
 import com.enestekin.food2forkkmm.datasource.network.toRecipe
 import com.enestekin.food2forkkmm.domain.util.DatetimeUtil
@@ -26,11 +27,15 @@ class MainActivity : AppCompatActivity() {
 
         val ktorClient = KtorClientFactory().build()
         CoroutineScope(IO).launch {
-            val recipeId = 1551
-            val recipe = ktorClient.get<RecipeDto>{
-                url("$BASE_URL/get?id=$recipeId")
-                header("Authorization", TOKEN)
-            }.toRecipe()
+
+            val recipeService = RecipeServiceImpl(
+                httpClient = ktorClient,
+                baseUrl = BASE_URL
+            )
+            val recipeId = 250
+            val recipe = recipeService.get(recipeId)
+
+
             println("KtorTest: ${recipe.title}")
             println("KtorTest: ${recipe.ingredients}")
             println("KtorTest: ${recipe.dateUpdated}")
