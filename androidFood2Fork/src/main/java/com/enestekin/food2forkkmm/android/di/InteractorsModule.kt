@@ -1,6 +1,7 @@
 package com.enestekin.food2forkkmm.android.di
 
 import com.enestekin.food2forkkmm.datasource.network.RecipeService
+import com.enestekin.food2forkkmm.interactors.recipe_detail.GetRecipe
 import com.enestekin.food2forkkmm.interactors.recipe_list.SearchRecipes
 import dagger.Module
 import dagger.Provides
@@ -18,5 +19,13 @@ object InteractorsModule {
         recipeService: RecipeService,
     ): SearchRecipes {
         return SearchRecipes(recipeService = recipeService)
+    }
+
+    @Singleton
+    @Provides
+    fun providesGetRecipe(
+        recipeService: RecipeService,
+    ): GetRecipe {
+        return GetRecipe(recipeService = recipeService)
     }
 }
