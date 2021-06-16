@@ -1,22 +1,24 @@
 package com.enestekin.food2forkkmm.interactors.recipe_detail
 
-import com.enestekin.food2forkkmm.datasource.network.RecipeService
+import com.enestekin.food2forkkmm.datasource.cache.RecipeCache
 import com.enestekin.food2forkkmm.domain.model.Recipe
 import com.enestekin.food2forkkmm.domain.util.DataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetRecipe(
-    private val recipeService: RecipeService, // we will change this to cache later
+    private val recipeCache: RecipeCache,
 ) {
     fun execute(
         recipeId: Int,
 
     ):Flow<DataState<Recipe>> = flow {
-        emit(DataState.loading())
 
         try {
-   val recipe = recipeService.get(id = recipeId)
+
+            emit(DataState.loading())
+
+            val recipe = recipeCache.get(recipeId)
             emit(DataState.data(message = null,data = recipe))
 
         }catch (e: Exception){

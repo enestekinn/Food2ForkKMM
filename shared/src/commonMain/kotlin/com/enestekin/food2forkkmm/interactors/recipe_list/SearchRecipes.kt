@@ -1,5 +1,6 @@
 package com.enestekin.food2forkkmm.interactors.recipe_list
 
+import com.enestekin.food2forkkmm.datasource.cache.RecipeCache
 import com.enestekin.food2forkkmm.datasource.network.RecipeService
 import com.enestekin.food2forkkmm.domain.model.Recipe
 import com.enestekin.food2forkkmm.domain.util.DataState
@@ -8,6 +9,7 @@ import kotlinx.coroutines.flow.flow
 
 class SearchRecipes(
     private val recipeService: RecipeService,
+    private val recipeCache: RecipeCache
 ) {
     fun execute(
         page:Int,
@@ -15,13 +17,26 @@ class SearchRecipes(
     ): Flow<DataState<List<Recipe>>> = flow {
         emit(DataState.loading())
 
-
         try {
             val recipes = recipeService.search(
                 page = page,
                 query = query,
             )
-            emit(DataState.data(data = recipes))
+
+            recipeCache.insert(recipes)
+
+            val cacheResult = if (query.isBlank()){
+
+                recipeCache.getAll(page = page)
+
+            }else{
+                recipeCache.search(
+                    query = query,
+                    page = page
+                )
+            }
+
+            emit(DataState.data(data = cacheResult))
 
         }catch (e: Exception){
             emit(DataState.error<List<Recipe>>(message = e.message?: "Unknown Error"))
