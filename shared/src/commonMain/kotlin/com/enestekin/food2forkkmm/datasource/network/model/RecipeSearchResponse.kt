@@ -1,7 +1,9 @@
 package com.enestekin.food2forkkmm.datasource.network.model
 
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class RecipeSearchResponse(
 
     @SerialName("count")
