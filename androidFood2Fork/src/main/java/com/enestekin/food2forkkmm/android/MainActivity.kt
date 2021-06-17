@@ -3,6 +3,8 @@ package com.enestekin.food2forkkmm.android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.ui.ExperimentalComposeUiApi
 import com.enestekin.food2forkkmm.android.presentation.navigation.Navigation
 import com.enestekin.food2forkkmm.datasource.network.KtorClientFactory
 import com.enestekin.food2forkkmm.datasource.network.RecipeServiceImpl
@@ -21,6 +23,8 @@ const val BASE_URL = "https://food2fork.ca/api/recipe"
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+    @ExperimentalMaterialApi
+    @ExperimentalComposeUiApi
     @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
