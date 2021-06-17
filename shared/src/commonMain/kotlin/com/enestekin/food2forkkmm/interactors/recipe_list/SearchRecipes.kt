@@ -23,9 +23,11 @@ class SearchRecipes(
                 query = query,
             )
 
+
             recipeCache.insert(recipes)
 
             val cacheResult = if (query.isBlank()){
+                println("SearchRecipes: Query is Blank")
 
                 recipeCache.getAll(page = page)
 
@@ -34,10 +36,11 @@ class SearchRecipes(
                     query = query,
                     page = page
                 )
+
             }
 
-            emit(DataState.data(data = cacheResult))
-
+            // emit List<Recipe> from cache
+            emit(DataState.data<List<Recipe>>(message = null, data = cacheResult))
         }catch (e: Exception){
             emit(DataState.error<List<Recipe>>(message = e.message?: "Unknown Error"))
         }

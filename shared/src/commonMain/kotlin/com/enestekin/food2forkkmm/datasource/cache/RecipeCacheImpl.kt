@@ -5,12 +5,11 @@ import com.enestekin.food2forkkmm.domain.model.Recipe
 import com.enestekin.food2forkkmm.domain.util.DatetimeUtil
 
 class RecipeCacheImpl(
-    private val recipeDatabase: RecipeDatabase,
-    private val datetimeUtil: DatetimeUtil
+    val recipeDatabase: RecipeDatabase,
+    private val datetimeUtil: DatetimeUtil,
 ): RecipeCache {
 
-    private val queries: RecipeDbQueries = recipeDatabase.recipeDbQueries
-
+    private var queries: RecipeDbQueries = recipeDatabase.recipeDbQueries
 
     override fun insert(recipe: Recipe) {
         queries.insertRecipe(
@@ -36,14 +35,14 @@ class RecipeCacheImpl(
      return queries.searchRecipes(
          query = query,
          pageSize = RECIPE_PAGINATION_PAGE_SIZE.toLong(),
-         offset = RECIPE_PAGINATION_PAGE_SIZE * (page-1).toLong()
+         offset = (RECIPE_PAGINATION_PAGE_SIZE * (page-1)).toLong()
      ).executeAsList().toRecipeList() //TODO("convert List<Recipe_Entity to List<Recipe>)
     }
 
     override fun getAll(page: Int): List<Recipe> {
         return queries.getAllRecipes(
             pageSize = RECIPE_PAGINATION_PAGE_SIZE.toLong(),
-            offset = RECIPE_PAGINATION_PAGE_SIZE * (page-1).toLong()
+            offset = (RECIPE_PAGINATION_PAGE_SIZE * (page-1)).toLong()
         ).executeAsList().toRecipeList() //TODO("convert List<Recipe_Entity to List<Recipe>)
     }
 

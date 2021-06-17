@@ -18,6 +18,7 @@ private val searchRecipes: SearchRecipes,
 
     init {
         loadRecipes()
+
     }
     private fun loadRecipes() {
         searchRecipes.execute(
@@ -32,7 +33,7 @@ private val searchRecipes: SearchRecipes,
 
             }
             dataState.message?.let { message ->
-                println("RecipeListVM: ${dataState.message}")
+                println("RecipeListVM: ${message}")
 
             }
 

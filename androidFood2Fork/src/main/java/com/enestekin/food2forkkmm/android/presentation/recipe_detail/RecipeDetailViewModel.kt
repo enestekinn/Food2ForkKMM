@@ -30,7 +30,9 @@ class RecipeDetailViewModel
         savedStateHandle.get<Int>("recipeId")?.let {recipeId ->
            viewModelScope.launch {
 
-               getRecipe(recipeId = recipeId) }
+               getRecipe(recipeId = recipeId)
+
+           }
         }
     }
     private fun getRecipe(recipeId: Int) {
@@ -38,13 +40,17 @@ class RecipeDetailViewModel
 
             println("RecipeDetailVM: ${dataState.isLoading}")
 
-            dataState.data?.let { recipe->
-                println("RecipeDetailVM: ${recipe}")
+    println(dataState.data)
+            dataState.data?.let { recipe ->
+                println("RecipeDetailVM:  Tekin")
+
+                println("RecipeDetailVM: recipe: ${recipe}")
                 this.recipe.value = recipe
             }
             dataState.message?.let { message ->
-                println("RecipeDetailVM: ${dataState.message}")
+                println("RecipeDetailVM:  Enotekin")
 
+                println("RecipeDetailVM: error: ${message}")
             }
         }.launchIn(viewModelScope)
     }

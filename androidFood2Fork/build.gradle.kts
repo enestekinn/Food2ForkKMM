@@ -40,6 +40,8 @@ android {
 dependencies {
     implementation(project(":shared"))
 
+    implementation(Accompanist.coil)
+
     implementation(AndroidX.appCompat)
 
     implementation(Compose.runtime)
@@ -57,10 +59,10 @@ dependencies {
 
     implementation(Hilt.hiltAndroid)
     implementation(Hilt.hiltNavigation)
+    implementation("androidx.fragment:fragment-ktx:1.3.3")
     kapt(Hilt.hiltCompiler)
 
     implementation(Kotlinx.datetime)
-
     implementation(Ktor.android)
 
     debugImplementation(SquareUp.leakCanary)
