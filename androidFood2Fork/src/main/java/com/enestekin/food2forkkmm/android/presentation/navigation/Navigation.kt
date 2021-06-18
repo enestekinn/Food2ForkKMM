@@ -27,10 +27,13 @@ fun Navigation() {
         composable(route = Screen.RecipeList.route){navBackStackEntry ->
             val factory = HiltViewModelFactory(LocalContext.current, navBackStackEntry)
             val viewModel: RecipeListViewModel = viewModel("RecipeListViewModel",factory)
-           RecipeListScreen(onSelectRecipe = { recipeId ->
-               navController.navigate(Screen.RecipeDetail.route + "/$recipeId")
-           })
-        }
+           RecipeListScreen(
+               state = viewModel.state.value,
+               onClickRecipeListItem = { recipeId ->
+                   navController.navigate(Screen.RecipeDetail.route + "/$recipeId")
+               }
+           )
+               }
         composable(
             route = Screen.RecipeDetail.route +"/{recipeId}",
             arguments = listOf(navArgument("recipeId"){
