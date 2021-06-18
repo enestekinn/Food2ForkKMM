@@ -4,6 +4,7 @@ import com.enestekin.food2forkkmm.datasource.cache.RecipeCache
 import com.enestekin.food2forkkmm.datasource.network.RecipeService
 import com.enestekin.food2forkkmm.domain.model.Recipe
 import com.enestekin.food2forkkmm.domain.util.DataState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -22,7 +23,7 @@ class SearchRecipes(
                 page = page,
                 query = query,
             )
-
+              delay(750)
 
             recipeCache.insert(recipes)
 
