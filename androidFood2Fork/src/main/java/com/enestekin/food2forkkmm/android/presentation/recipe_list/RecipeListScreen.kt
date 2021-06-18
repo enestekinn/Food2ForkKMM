@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.enestekin.food2forkkmm.android.presentation.components.GradientDemo
 import com.enestekin.food2forkkmm.android.presentation.recipe_list.components.RecipeCard
 import com.enestekin.food2forkkmm.android.presentation.recipe_list.components.RecipeList
 import com.enestekin.food2forkkmm.android.presentation.theme.AppTheme
@@ -29,10 +30,12 @@ fun RecipeListScreen(
 
     AppTheme(displayProgressBar = state.isLoading) {
 
+
      RecipeList(
          loading = state.isLoading,
          recipes = state.recipes,
-         onClickRecipeListItem =onClickRecipeListItem )
+         onClickRecipeListItem =onClickRecipeListItem
+     )
 
         }
     }
