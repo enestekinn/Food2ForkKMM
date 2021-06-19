@@ -17,6 +17,7 @@ import com.enestekin.food2forkkmm.android.presentation.components.GradientDemo
 import com.enestekin.food2forkkmm.android.presentation.recipe_list.components.RecipeCard
 import com.enestekin.food2forkkmm.android.presentation.recipe_list.components.RecipeList
 import com.enestekin.food2forkkmm.android.presentation.theme.AppTheme
+import com.enestekin.food2forkkmm.presentation.recipe_list.RecipeListEvents
 import com.enestekin.food2forkkmm.presentation.recipe_list.RecipeListState
 
 @ExperimentalMaterialApi
@@ -24,7 +25,7 @@ import com.enestekin.food2forkkmm.presentation.recipe_list.RecipeListState
 @Composable
 fun RecipeListScreen(
     state: RecipeListState,
-    // events: (RecipeListEvent) -> Unit,
+     onTriggerEvent: (RecipeListEvents) -> Unit,
     onClickRecipeListItem: (Int) -> Unit
 ){
 
@@ -34,6 +35,10 @@ fun RecipeListScreen(
      RecipeList(
          loading = state.isLoading,
          recipes = state.recipes,
+         page = state.page,
+         onTriggerNextPage = {
+             onTriggerEvent(RecipeListEvents.NextPage)
+         },
          onClickRecipeListItem =onClickRecipeListItem
      )
 

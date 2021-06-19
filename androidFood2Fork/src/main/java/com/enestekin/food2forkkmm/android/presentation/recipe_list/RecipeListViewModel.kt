@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.enestekin.food2forkkmm.domain.model.Recipe
 import com.enestekin.food2forkkmm.interactors.recipe_list.SearchRecipes
+import com.enestekin.food2forkkmm.presentation.recipe_list.RecipeListEvents
 import com.enestekin.food2forkkmm.presentation.recipe_list.RecipeListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -23,8 +24,27 @@ private val searchRecipes: SearchRecipes,
     val state: MutableState<RecipeListState> = mutableStateOf(RecipeListState())
 
     init {
-        loadRecipes()
+        onTriggerEvent(RecipeListEvents.LoadRecipes)
 
+    }
+
+    fun onTriggerEvent(event: RecipeListEvents){
+        when(event) {
+            RecipeListEvents.LoadRecipes -> {
+                loadRecipes()
+            }
+            RecipeListEvents.NextPage -> {
+                nextPage()
+            }
+            else -> {
+                handleError("Invalid")
+            }
+        }
+    }
+
+    private fun nextPage() {
+        state.value = state.value.copy(page = state.value.page + 1)
+        loadRecipes()
     }
     private fun loadRecipes() {
         searchRecipes.execute(
@@ -39,8 +59,7 @@ private val searchRecipes: SearchRecipes,
 
             }
             dataState.message?.let { message ->
-                println("RecipeListVM: ${message}")
-
+handleError(message)
             }
 
         }.launchIn(viewModelScope)
@@ -52,5 +71,8 @@ private val searchRecipes: SearchRecipes,
         curr.addAll(recipes)
         state.value = state.value.copy(recipes = curr)
 
+    }
+    private fun handleError(errorMessage: String){
+        //TODO("handle errors)
     }
 }
