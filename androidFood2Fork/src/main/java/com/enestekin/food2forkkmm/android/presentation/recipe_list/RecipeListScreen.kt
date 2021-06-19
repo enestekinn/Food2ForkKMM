@@ -25,9 +25,10 @@ fun RecipeListScreen(
     Scaffold(
         topBar = {
                  SearchAppBar(query = state.query, onQueryChange = {
-                 /*TODO*/ },
+                 onTriggerEvent(RecipeListEvents.OnUpdateQuery(it))
+                  },
                  onExecuteSearch = {
-                     //TODO("Execite a new search)
+                    onTriggerEvent(RecipeListEvents.NewSearch)
                  })
         },
     ) {
