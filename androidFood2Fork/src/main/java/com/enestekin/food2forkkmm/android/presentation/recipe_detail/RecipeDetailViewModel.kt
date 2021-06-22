@@ -43,7 +43,7 @@ class RecipeDetailViewModel
                 getRecipe(event.recipeId)
             }
             else -> {
-                handleError("Invalid Event")
+               handleError("Invalid Event")
             }
 
         }
@@ -69,6 +69,8 @@ class RecipeDetailViewModel
         }.launchIn(viewModelScope)
     }
     private fun handleError(errorMessage: String){
-        //TODO("hanle error")
+        val queue =state.value.queue
+        queue.add(errorMessage)
+        state.value = state.value.copy(queue = queue)
     }
 }
