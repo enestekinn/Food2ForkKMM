@@ -20,15 +20,19 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.enestekin.food2forkkmm.presentation.recipe_list.FoodCategory
+import com.enestekin.food2forkkmm.presentation.recipe_list.FoodCategoryUtil
 
 @ExperimentalComposeUiApi
 @Composable
 fun SearchAppBar(
     query: String,
+    onQueryChanged: (String) -> Unit,
+    onExecuteSearch: () -> Unit,
     categories: List<FoodCategory>,
-    onQueryChange: (String) -> Unit,
-    onExecuteSearch:() -> Unit,
-){
+    selectedCategory: FoodCategory?,
+    onSelectedCategoryChanged: (FoodCategory) -> Unit,
+) {
+    val keyboardController = LocalSoftwareKeyboardController.current
     Surface(
         modifier = Modifier
             .fillMaxWidth(),
@@ -42,11 +46,18 @@ fun SearchAppBar(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 TextField(
+                    modifier = Modifier
+                        .fillMaxWidth(.9f)
+                        .padding(8.dp)
+                    ,
                     value = query,
-                    onValueChange = onQueryChange,
+                    onValueChange = {
+                        println(it)
+
+                        onQueryChanged(it) },
                     label = {
-                        Text(text ="Search...")
-                    },
+                        Text(text = "Search")
+                            },
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Done
@@ -69,12 +80,23 @@ fun SearchAppBar(
 
             }
 
-            LazyRow(modifier = Modifier.padding(start = 8.dp, bottom = 8.dp)) {
+            LazyRow(
+                modifier = Modifier.padding(start = 8.dp, bottom = 8.dp)
+            ) {
                 items(categories){
-                    FoodCategoryChip(category = it.value,
-                        isSelected = false,
+                    println(it)
+                    FoodCategoryChip(
+                        category = it.value,
+                        isSelected = selectedCategory == it,
                         onSelectedCategoryChanged = {
-                            //TODO("")
+                            println("Burasi calisti $it")
+                            FoodCategoryUtil().getFoodCategory(it)?.let {newCategory ->
+                                println("Burasi calisti 2 $newCategory")
+
+
+                                onSelectedCategoryChanged(newCategory)
+
+                            }
                         })
                 }
             }

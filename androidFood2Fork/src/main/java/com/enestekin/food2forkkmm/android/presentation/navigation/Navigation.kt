@@ -32,7 +32,7 @@ fun Navigation() {
 
                onTriggerEvent = viewModel::onTriggerEvent,
 
-               onClickRecipeListItem = { recipeId ->
+               onSelectRecipe = { recipeId ->
                    navController.navigate(Screen.RecipeDetail.route + "/$recipeId")
                }
            )

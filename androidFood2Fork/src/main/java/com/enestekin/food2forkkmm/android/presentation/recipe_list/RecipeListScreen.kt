@@ -17,38 +17,42 @@ import com.enestekin.food2forkkmm.presentation.recipe_list.RecipeListState
 @Composable
 fun RecipeListScreen(
     state: RecipeListState,
-     onTriggerEvent: (RecipeListEvents) -> Unit,
-    onClickRecipeListItem: (Int) -> Unit
+    onTriggerEvent: (RecipeListEvents) -> Unit,
+    onSelectRecipe: (Int) -> Unit,
 ){
-
-    AppTheme(displayProgressBar = state.isLoading) {
-
-        val foodCategories = remember { FoodCategoryUtil().getAllFoodCategories() }
-
-    Scaffold(
-        topBar = {
-                 SearchAppBar(
-                     query = state.query,
-                     categories = foodCategories,
-                     onQueryChange = {
-                 onTriggerEvent(RecipeListEvents.OnUpdateQuery(it))
-                  },
-                 onExecuteSearch = {
-                    onTriggerEvent(RecipeListEvents.NewSearch)
-                 })
-        },
+    AppTheme(
+        displayProgressBar = state.isLoading
     ) {
-        RecipeList(
-            loading = state.isLoading,
-            recipes = state.recipes,
-            page = state.page,
-            onTriggerNextPage = {
-                onTriggerEvent(RecipeListEvents.NextPage)
+        val foodCategories = remember{ FoodCategoryUtil().getAllFoodCategories()}
+        Scaffold(
+            topBar = {
+                SearchAppBar(
+                    query = state.query,
+                    onQueryChanged = {
+                        onTriggerEvent(RecipeListEvents.OnUpdateQuery(it))
+                    },
+                    onExecuteSearch = {
+                        onTriggerEvent(RecipeListEvents.NewSearch)
+                    },
+                    categories = foodCategories,
+                    selectedCategory = state.selectedCategory,
+                    onSelectedCategoryChanged = {
+                        onTriggerEvent(RecipeListEvents.OnSelectCategory(it))
+                    },
+                )
             },
-            onClickRecipeListItem =onClickRecipeListItem
-        )
-    }
-
+        ) {
+            RecipeList(
+                loading = state.isLoading,
+                recipes = state.recipes,
+                page = state.page,
+                onTriggerNextPage = {
+                    onTriggerEvent(RecipeListEvents.NextPage)
+                },
+                onClickRecipeListItem = onSelectRecipe
+            )
         }
     }
+}
+
 
