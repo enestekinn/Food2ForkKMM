@@ -3,6 +3,7 @@ package com.enestekin.food2forkkmm.interactors.recipe_detail
 import com.enestekin.food2forkkmm.datasource.cache.RecipeCache
 import com.enestekin.food2forkkmm.domain.model.Recipe
 import com.enestekin.food2forkkmm.domain.util.DataState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -15,6 +16,8 @@ class GetRecipe (
     ): Flow<DataState<Recipe>> = flow {
         try {
             emit(DataState.loading())
+
+            delay(2000)
 
             val recipe =  recipeCache.get(recipeId)
 
