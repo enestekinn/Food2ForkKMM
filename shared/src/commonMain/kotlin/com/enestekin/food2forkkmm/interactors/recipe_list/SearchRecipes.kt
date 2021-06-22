@@ -25,6 +25,10 @@ class SearchRecipes(
             )
               delay(500)
 
+            if (query == "error"){
+                throw Exception ("Forcing an error.. Search FAILED")
+            }
+
             recipeCache.insert(recipes)
 
             val cacheResult = if (query.isBlank()){
