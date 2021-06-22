@@ -1,10 +1,6 @@
 package com.enestekin.food2forkkmm.android.presentation.navigation
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Button
-import androidx.compose.material.Divider
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.platform.LocalContext
@@ -46,7 +42,8 @@ fun Navigation() {
             val factory = HiltViewModelFactory(LocalContext.current,navBackStackEntry)
             val viewModel: RecipeDetailViewModel = viewModel("RecipeDetailViewModel",factory)
             RecipeDetailScreen(
-                recipe = viewModel.recipe.value
+               state = viewModel.state.value,
+                onTriggerEvent = viewModel::onTriggerEvent
             )
 
 
