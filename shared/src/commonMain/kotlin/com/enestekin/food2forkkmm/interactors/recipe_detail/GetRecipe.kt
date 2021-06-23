@@ -29,7 +29,7 @@ class GetRecipe (
             emit(DataState.error<Recipe>(
 
                 message = GenericMessageInfo.Builder()
-                    .id("SearchRecipe.Error")
+                    .id("GetRecipe.Error")
                     .title("Error")
                     .uiComponentType(UIComponentType.Dialog)
                     .description(e.message?: "Unknown Error")

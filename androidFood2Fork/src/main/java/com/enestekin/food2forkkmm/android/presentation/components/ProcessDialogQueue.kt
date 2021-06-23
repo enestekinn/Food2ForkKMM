@@ -6,12 +6,16 @@ import com.enestekin.food2forkkmm.domain.util.Queue
 
 @Composable
 fun ProcessDialogQueue(
-    dialogQueue: Queue<GenericMessageInfo>?
+    dialogQueue: Queue<GenericMessageInfo>?,
+    onRemoveHeadMessageFromQueue: () -> Unit,
 ){
 
     dialogQueue?.peek()?.let { dialogInfo ->
         GenericDialog(
-            title = dialogInfo.title , description = dialogInfo.description)
+            title = dialogInfo.title ,
+            description = dialogInfo.description,
+            onRemoveHeadFromQueue = onRemoveHeadMessageFromQueue
+        )
     }
 
 }

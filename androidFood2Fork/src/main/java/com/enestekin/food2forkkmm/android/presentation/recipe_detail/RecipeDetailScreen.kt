@@ -14,6 +14,7 @@ import com.enestekin.food2forkkmm.android.presentation.recipe_detail.components.
 import com.enestekin.food2forkkmm.android.presentation.theme.AppTheme
 import com.enestekin.food2forkkmm.presentation.recipe_detail.RecipeDetailEvents
 import com.enestekin.food2forkkmm.presentation.recipe_detail.RecipeDetailState
+import com.enestekin.food2forkkmm.presentation.recipe_list.RecipeListEvents
 import kotlin.reflect.KFunction1
 
 @ExperimentalStdlibApi
@@ -27,7 +28,10 @@ fun RecipeDetailScreen(
 
     AppTheme(
         displayProgressBar = state.isLoading,
-    dialogQueue = state.queue
+    dialogQueue = state.queue,
+        onRemoveHeadMessageFromQueue = {
+            onTriggerEvent(RecipeDetailEvents.OnRemoveHeadMessageFromQueue)
+        }
     ) {
         if (state.recipe == null && state.isLoading) {
             //Loading

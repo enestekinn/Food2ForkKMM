@@ -10,6 +10,7 @@ import com.enestekin.food2forkkmm.domain.model.GenericMessageInfo
 import com.enestekin.food2forkkmm.domain.model.Recipe
 import com.enestekin.food2forkkmm.domain.model.UIComponentType
 import com.enestekin.food2forkkmm.domain.util.GenericMessageInfoQueueUtil
+import com.enestekin.food2forkkmm.domain.util.Queue
 import com.enestekin.food2forkkmm.interactors.recipe_list.SearchRecipes
 import com.enestekin.food2forkkmm.presentation.recipe_list.FoodCategory
 import com.enestekin.food2forkkmm.presentation.recipe_list.RecipeListEvents
@@ -52,17 +53,21 @@ private val searchRecipes: SearchRecipes,
             is RecipeListEvents.OnSelectCategory -> {
                 onSelectCategory(event.category)
             }
+            is RecipeListEvents.OnRemoveHeadMessageFromQueue ->{
+                removeHeadMessage()
+            }
             else -> {
-                appendToMessageQueue(
-                    GenericMessageInfo.Builder()
-                        .id(UUID.randomUUID().toString())
-                        .title("Error")
-                        .uiComponentType(UIComponentType.Dialog)
-                        .description( "Invalid Event")
-                )
+                val messageInfoBuilder = GenericMessageInfo.Builder()
+                    .id(UUID.randomUUID().toString())
+                    .title("Invalid Event")
+                    .uiComponentType(UIComponentType.Dialog)
+                    .description("Something went wrong.")
+                appendToMessageQueue(messageInfo = messageInfoBuilder)
             }
         }
     }
+
+
 
     private fun onSelectCategory(category: FoodCategory){
         state.value = state.value.copy(selectedCategory = category,query = category.value)
@@ -106,7 +111,7 @@ appendToMessageQueue(message)
     }
     private fun appendToMessageQueue(messageInfo: GenericMessageInfo.Builder){
 
-        if (GenericMessageInfoQueueUtil().doesMessageAlreadyExistInQueue(
+        if (!GenericMessageInfoQueueUtil().doesMessageAlreadyExistInQueue(
                 queue = state.value.queue,
                 messageInfo = messageInfo.build()
         )){
@@ -115,5 +120,15 @@ appendToMessageQueue(message)
             state.value = state.value.copy(queue = queue)
         }
 
+    }
+    private fun removeHeadMessage() {
+        try {
+            val queue = state.value.queue
+            queue.remove() // can throw exception if empty
+            state.value = state.value.copy(queue = Queue(mutableListOf())) // force recompose
+            state.value = state.value.copy(queue = queue)
+        }catch (e: Exception){
+            // nothing to remove, queue is empty
+        }
     }
 }

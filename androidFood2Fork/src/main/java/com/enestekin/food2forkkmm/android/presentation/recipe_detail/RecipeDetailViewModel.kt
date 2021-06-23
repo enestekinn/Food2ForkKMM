@@ -11,6 +11,7 @@ import com.enestekin.food2forkkmm.domain.model.Recipe
 import com.enestekin.food2forkkmm.domain.model.UIComponentType
 import com.enestekin.food2forkkmm.domain.util.DatetimeUtil
 import com.enestekin.food2forkkmm.domain.util.GenericMessageInfoQueueUtil
+import com.enestekin.food2forkkmm.domain.util.Queue
 import com.enestekin.food2forkkmm.interactors.recipe_detail.GetRecipe
 import com.enestekin.food2forkkmm.presentation.recipe_detail.RecipeDetailEvents
 import com.enestekin.food2forkkmm.presentation.recipe_detail.RecipeDetailState
@@ -45,6 +46,9 @@ class RecipeDetailViewModel
         when(event){
             is RecipeDetailEvents.GetRecipe -> {
                 getRecipe(event.recipeId)
+            }
+            is RecipeDetailEvents.OnRemoveHeadMessageFromQueue ->{
+                removeHeadMessage()
             }
             else -> {
                 appendToMessageQueue(
@@ -87,6 +91,18 @@ class RecipeDetailViewModel
             val queue =state.value.queue
             queue.add(messageInfo.build())
             state.value = state.value.copy(queue = queue)
+        }
+
+    }
+    private fun removeHeadMessage() {
+        try {
+            val queue = state.value.queue
+            queue.remove()
+            state.value = state.value.copy(queue = Queue(mutableListOf())) // force recompose
+            state.value = state.value.copy(queue = queue)
+
+        }catch (e: Exception) {
+
         }
 
     }

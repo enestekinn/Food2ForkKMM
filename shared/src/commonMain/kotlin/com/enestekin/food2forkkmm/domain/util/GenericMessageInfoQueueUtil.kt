@@ -6,7 +6,8 @@ class GenericMessageInfoQueueUtil() {
 
     fun doesMessageAlreadyExistInQueue(
         queue: Queue<GenericMessageInfo>,
-        messageInfo: GenericMessageInfo): Boolean {
+        messageInfo: GenericMessageInfo
+    ): Boolean {
         for (item in queue.items){
             if (item.id == messageInfo.id){
                 return true
