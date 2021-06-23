@@ -6,7 +6,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.enestekin.food2forkkmm.domain.model.GenericMessageInfo
 import com.enestekin.food2forkkmm.domain.model.Recipe
+import com.enestekin.food2forkkmm.domain.model.UIComponentType
 import com.enestekin.food2forkkmm.interactors.recipe_list.SearchRecipes
 import com.enestekin.food2forkkmm.presentation.recipe_list.FoodCategory
 import com.enestekin.food2forkkmm.presentation.recipe_list.RecipeListEvents
@@ -14,7 +16,9 @@ import com.enestekin.food2forkkmm.presentation.recipe_list.RecipeListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 @HiltViewModel
 class RecipeListViewModel
@@ -48,7 +52,13 @@ private val searchRecipes: SearchRecipes,
                 onSelectCategory(event.category)
             }
             else -> {
-                handleError("Invalid Event")
+                appendToMessageQueue(
+                    GenericMessageInfo.Builder()
+                        .id(UUID.randomUUID().toString())
+                        .title("Error")
+                        .uiComponentType(UIComponentType.Dialog)
+                        .description( "Invalid Event")
+                )
             }
         }
     }
@@ -80,7 +90,7 @@ private val searchRecipes: SearchRecipes,
 
             }
             dataState.message?.let { message ->
-handleError(message)
+appendToMessageQueue(message)
             }
 
         }.launchIn(viewModelScope)
@@ -93,9 +103,9 @@ handleError(message)
         state.value = state.value.copy(recipes = curr)
 
     }
-    private fun handleError(errorMessage: String){
+    private fun appendToMessageQueue(messageInfo: GenericMessageInfo.Builder){
                 val queue =state.value.queue
-                queue.add(errorMessage)
+                queue.add(messageInfo.build())
         state.value = state.value.copy(queue = queue)
     }
 }
