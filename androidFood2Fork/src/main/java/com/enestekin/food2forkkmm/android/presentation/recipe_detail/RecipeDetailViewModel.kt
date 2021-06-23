@@ -10,6 +10,7 @@ import com.enestekin.food2forkkmm.domain.model.GenericMessageInfo
 import com.enestekin.food2forkkmm.domain.model.Recipe
 import com.enestekin.food2forkkmm.domain.model.UIComponentType
 import com.enestekin.food2forkkmm.domain.util.DatetimeUtil
+import com.enestekin.food2forkkmm.domain.util.GenericMessageInfoQueueUtil
 import com.enestekin.food2forkkmm.interactors.recipe_detail.GetRecipe
 import com.enestekin.food2forkkmm.presentation.recipe_detail.RecipeDetailEvents
 import com.enestekin.food2forkkmm.presentation.recipe_detail.RecipeDetailState
@@ -78,8 +79,15 @@ class RecipeDetailViewModel
         }.launchIn(viewModelScope)
     }
     private fun appendToMessageQueue(messageInfo: GenericMessageInfo.Builder){
-        val queue =state.value.queue
-        queue.add(messageInfo.build())
-        state.value = state.value.copy(queue = queue)
+
+        if (GenericMessageInfoQueueUtil().doesMessageAlreadyExistInQueue(
+                queue = state.value.queue,
+                messageInfo = messageInfo.build()
+            )){
+            val queue =state.value.queue
+            queue.add(messageInfo.build())
+            state.value = state.value.copy(queue = queue)
+        }
+
     }
 }
