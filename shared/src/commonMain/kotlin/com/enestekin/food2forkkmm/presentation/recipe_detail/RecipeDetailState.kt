@@ -7,7 +7,11 @@ import com.enestekin.food2forkkmm.domain.util.Queue
 data class RecipeDetailState(
     val isLoading: Boolean = false,
     val recipe: Recipe? = null,
-    val queue: Queue<GenericMessageInfo> = Queue(mutableListOf())
-
-
-)
+    val queue: Queue<GenericMessageInfo> = Queue(mutableListOf()),
+){
+    constructor(): this (
+        isLoading = false,
+        recipe = null,
+        queue = Queue(mutableListOf())
+            )
+}

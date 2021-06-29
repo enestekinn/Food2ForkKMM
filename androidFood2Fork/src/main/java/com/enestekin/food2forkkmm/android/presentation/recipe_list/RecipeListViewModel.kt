@@ -109,7 +109,7 @@ private val searchRecipes: SearchRecipes,
         searchRecipes.execute(
             page = state.value.page,
             query = state.value.query
-        ).onEach { dataState ->
+        ).collectCommon(viewModelScope) { dataState ->
 
             state.value =state.value.copy(isLoading = dataState.isLoading)
 
@@ -121,7 +121,7 @@ private val searchRecipes: SearchRecipes,
 appendToMessageQueue(message)
             }
 
-        }.launchIn(viewModelScope)
+        }
     }
 
 

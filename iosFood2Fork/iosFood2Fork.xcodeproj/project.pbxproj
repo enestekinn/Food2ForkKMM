@@ -3,20 +3,40 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		4A52A5EB2684742A001AE7AA /* SearchAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A52A5EA2684742A001AE7AA /* SearchAppBar.swift */; };
+		4A52A5ED268482A4001AE7AA /* FoodCategoryChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A52A5EC268482A4001AE7AA /* FoodCategoryChip.swift */; };
+		4A52A5EF26849245001AE7AA /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A52A5EE26849245001AE7AA /* RecipeCard.swift */; };
+		4A9E37D52684E6870090B6A4 /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E37D42684E6870090B6A4 /* RecipeDetailViewModel.swift */; };
+		4A9E37D72684E7A90090B6A4 /* RecipeDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E37D62684E7A90090B6A4 /* RecipeDetailScreen.swift */; };
+		4A9E37DA2684EB8C0090B6A4 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E37D92684EB8C0090B6A4 /* RecipeView.swift */; };
+		4A9E37DD2684EEFD0090B6A4 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 4A9E37DC2684EEFD0090B6A4 /* Avenir.ttc */; };
+		4A9E37DF2684F3A10090B6A4 /* DefaultText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E37DE2684F3A10090B6A4 /* DefaultText.swift */; };
+		4A9E37E12684F5FE0090B6A4 /* GenericMessageInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9E37E02684F5FE0090B6A4 /* GenericMessageInfoAlert.swift */; };
+		4AB6F4B82683729600B7EE21 /* RecipeListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6F4B72683729600B7EE21 /* RecipeListScreen.swift */; };
+		4AB6F4BA2683764A00B7EE21 /* RecipeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB6F4B92683764A00B7EE21 /* RecipeListViewModel.swift */; };
 		4D7A4C576E9883342B5DE31F /* Pods_iosFood2Fork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F8B0B1D2A74E694BF01BD7 /* Pods_iosFood2Fork.framework */; };
-		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		41F8B0B1D2A74E694BF01BD7 /* Pods_iosFood2Fork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosFood2Fork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A52A5EA2684742A001AE7AA /* SearchAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAppBar.swift; sourceTree = "<group>"; };
+		4A52A5EC268482A4001AE7AA /* FoodCategoryChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryChip.swift; sourceTree = "<group>"; };
+		4A52A5EE26849245001AE7AA /* RecipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
+		4A9E37D42684E6870090B6A4 /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
+		4A9E37D62684E7A90090B6A4 /* RecipeDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailScreen.swift; sourceTree = "<group>"; };
+		4A9E37D92684EB8C0090B6A4 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		4A9E37DC2684EEFD0090B6A4 /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Avenir.ttc; path = ../../../../../../../System/Library/Fonts/Avenir.ttc; sourceTree = "<group>"; };
+		4A9E37DE2684F3A10090B6A4 /* DefaultText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultText.swift; sourceTree = "<group>"; };
+		4A9E37E02684F5FE0090B6A4 /* GenericMessageInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericMessageInfoAlert.swift; sourceTree = "<group>"; };
+		4AB6F4B72683729600B7EE21 /* RecipeListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListScreen.swift; sourceTree = "<group>"; };
+		4AB6F4B92683764A00B7EE21 /* RecipeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListViewModel.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosFood2Fork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosFood2Fork.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5316E62A82BACD9004C64A8 /* Pods-iosFood2Fork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosFood2Fork.release.xcconfig"; path = "Target Support Files/Pods-iosFood2Fork/Pods-iosFood2Fork.release.xcconfig"; sourceTree = "<group>"; };
 		EB09AA17B854FBA6CDDE8086 /* Pods-iosFood2Fork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosFood2Fork.debug.xcconfig"; path = "Target Support Files/Pods-iosFood2Fork/Pods-iosFood2Fork.debug.xcconfig"; sourceTree = "<group>"; };
@@ -40,8 +60,64 @@
 				EB09AA17B854FBA6CDDE8086 /* Pods-iosFood2Fork.debug.xcconfig */,
 				E5316E62A82BACD9004C64A8 /* Pods-iosFood2Fork.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		4A52A5E926847409001AE7AA /* components */ = {
+			isa = PBXGroup;
+			children = (
+				4A52A5EA2684742A001AE7AA /* SearchAppBar.swift */,
+				4A52A5EC268482A4001AE7AA /* FoodCategoryChip.swift */,
+				4A52A5EE26849245001AE7AA /* RecipeCard.swift */,
+				4A9E37DE2684F3A10090B6A4 /* DefaultText.swift */,
+				4A9E37E02684F5FE0090B6A4 /* GenericMessageInfoAlert.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		4A9E37D32684E66C0090B6A4 /* recipe_detail */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E37D82684EB760090B6A4 /* components */,
+				4A9E37D42684E6870090B6A4 /* RecipeDetailViewModel.swift */,
+				4A9E37D62684E7A90090B6A4 /* RecipeDetailScreen.swift */,
+			);
+			path = recipe_detail;
+			sourceTree = "<group>";
+		};
+		4A9E37D82684EB760090B6A4 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E37D92684EB8C0090B6A4 /* RecipeView.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		4A9E37DB2684EEE10090B6A4 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E37DC2684EEFD0090B6A4 /* Avenir.ttc */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		4AB6F4B42683724A00B7EE21 /* presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4A9E37D32684E66C0090B6A4 /* recipe_detail */,
+				4A52A5E926847409001AE7AA /* components */,
+				4AB6F4B52683725300B7EE21 /* recipe_list */,
+			);
+			path = presentation;
+			sourceTree = "<group>";
+		};
+		4AB6F4B52683725300B7EE21 /* recipe_list */ = {
+			isa = PBXGroup;
+			children = (
+				4AB6F4B72683729600B7EE21 /* RecipeListScreen.swift */,
+				4AB6F4B92683764A00B7EE21 /* RecipeListViewModel.swift */,
+			);
+			path = recipe_list;
 			sourceTree = "<group>";
 		};
 		7555FF72242A565900829871 = {
@@ -65,7 +141,8 @@
 		7555FF7D242A565900829871 /* iosFood2Fork */ = {
 			isa = PBXGroup;
 			children = (
-				7555FF82242A565900829871 /* ContentView.swift */,
+				4A9E37DB2684EEE10090B6A4 /* fonts */,
+				4AB6F4B42683724A00B7EE21 /* presentation */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 			);
@@ -91,6 +168,7 @@
 				7555FF77242A565900829871 /* Sources */,
 				7555FF79242A565900829871 /* Resources */,
 				D9A9B1CB1F23E067D580D1D7 /* Frameworks */,
+				F0C0B7A449BEA2642942C8A1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A9E37DD2684EEFD0090B6A4 /* Avenir.ttc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +246,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F0C0B7A449BEA2642942C8A1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosFood2Fork/Pods-iosFood2Fork-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iosFood2Fork/Pods-iosFood2Fork-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iosFood2Fork/Pods-iosFood2Fork-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -174,8 +270,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A9E37DA2684EB8C0090B6A4 /* RecipeView.swift in Sources */,
+				4AB6F4B82683729600B7EE21 /* RecipeListScreen.swift in Sources */,
+				4A9E37D52684E6870090B6A4 /* RecipeDetailViewModel.swift in Sources */,
+				4A52A5EB2684742A001AE7AA /* SearchAppBar.swift in Sources */,
+				4A9E37E12684F5FE0090B6A4 /* GenericMessageInfoAlert.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				4A52A5ED268482A4001AE7AA /* FoodCategoryChip.swift in Sources */,
+				4A9E37DF2684F3A10090B6A4 /* DefaultText.swift in Sources */,
+				4AB6F4BA2683764A00B7EE21 /* RecipeListViewModel.swift in Sources */,
+				4A9E37D72684E7A90090B6A4 /* RecipeDetailScreen.swift in Sources */,
+				4A52A5EF26849245001AE7AA /* RecipeCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +415,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-framework",
+					"\"shared\"",
+					"-lsqlite3",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosFood2Fork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -328,6 +441,14 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-framework",
+					"\"shared\"",
+					"-lsqlite3",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosFood2Fork;
 				PRODUCT_NAME = "$(TARGET_NAME)";

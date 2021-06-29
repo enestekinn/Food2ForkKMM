@@ -4,11 +4,6 @@ import com.enestekin.food2forkkmm.domain.model.GenericMessageInfo
 import com.enestekin.food2forkkmm.domain.model.Recipe
 import com.enestekin.food2forkkmm.domain.util.Queue
 
-data class RecipeListState(
-    val isLoading: Boolean = false,
-    val page: Int = 1,
-    val query: String = "",
-    val selectedCategory: FoodCategory? =null,
-    val recipes: List<Recipe> = listOf(),
-    val queue: Queue<GenericMessageInfo> = Queue(mutableListOf())
-)
+expect class RecipeListState
+
+const val RECIPE_PAGINATION_PAGE_SIZE = 30
